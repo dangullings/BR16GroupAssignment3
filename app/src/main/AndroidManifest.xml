@@ -16,6 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ClinicActivity" />
+        <activity android:name=".PatientActivity" />
+        <activity android:name=".ReadingActivity" />
+        <activity android:name=".ShowReadingsActivity" />
+        <activity android:name=".UpdatePatientStatusActivity"></activity>
     </application>
 
 </manifest>

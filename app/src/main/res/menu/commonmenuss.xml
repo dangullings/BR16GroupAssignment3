@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menuShowReadings"
+        android:icon="@drawable/ic_show_readings"
+        android:title="Show Readings"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menuUpdatePatientStatus"
+        android:icon="@drawable/ic_update_patient_status"
+        android:title="Update Patient Status"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menuAddPatient"
+        android:icon="@drawable/ic_add_patient"
+        android:title="Add Patient"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menuAddClinic"
+        android:icon="@drawable/ic_add_clinic"
+        android:title="Add Clinic"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menuHome"
+        android:icon="@drawable/ic_home"
+        android:title="Home"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/menuAddReading"
+        android:icon="@drawable/ic_add_reading"
+        android:title="Add Reading"
+        app:showAsAction="never" />
+</menu>
