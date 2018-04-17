@@ -1,4 +1,18 @@
 <resources>
     <string name="app_name">BR16GroupAssignment3</string>
     <string name="title_activity_clinic">ClinicActivity</string>
+    <string-array name="readingType">
+        <item></item>
+        <item>blood_press</item>
+        <item>steps</item>
+        <item>temp</item>
+        <item>weight</item>
+    </string-array>
+    <string-array name="readingUnit">
+        <item></item>
+        <item>Fahrenheit</item>
+        <item>Celsius</item>
+        <item>Lbs</item>
+        <item>Kg</item>
+    </string-array>
 </resources>
