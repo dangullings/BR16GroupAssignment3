@@ -130,7 +130,6 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="text"
-            android:text=""
             tools:layout_editor_absoluteX="134dp"
             tools:layout_editor_absoluteY="528dp"
             app:layout_constraintStart_toEndOf="@id/ReadinglblReadingID"
