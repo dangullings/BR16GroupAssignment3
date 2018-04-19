@@ -67,12 +67,4 @@
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ClinicIdEditText" />
-
-    <Button
-        android:id="@+id/addClinicButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Submit"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="328dp" />
 </android.support.constraint.ConstraintLayout>
