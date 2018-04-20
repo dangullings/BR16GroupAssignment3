@@ -10,6 +10,11 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+    private Trial trial;
+
+    public MainActivity() {
+        trial = new Trial();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,5 +70,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public Trial getTrial() {
+        return trial;
     }
 }
