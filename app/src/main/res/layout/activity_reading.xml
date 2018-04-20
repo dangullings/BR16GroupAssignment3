@@ -1,9 +1,207 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroller1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ReadingActivity">
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="0dp">
 
-</android.support.constraint.ConstraintLayout>
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/Layout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:padding="20dp"
+        tools:context=".ReadingActivity">
+
+
+        <TextView
+            android:id="@+id/ReadinglblAddReading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Add Patient Reading"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="14dp" />
+
+        <TextView
+            android:id="@+id/ReadinglblPatient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Select Patient:"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ReadinglblAddReading"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="46dp" />
+
+        <Spinner
+            android:id="@+id/ReadingddPatient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@id/ReadinglblPatient"
+            app:layout_constraintTop_toTopOf="@id/ReadinglblPatient" />
+
+        <TextView
+            android:id="@+id/ReadinglblReadingType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Select Reading Type:"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ReadingddPatient"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="95dp" />
+
+        <Spinner
+            android:id="@+id/ReadingddReadingType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintStart_toEndOf="@id/ReadinglblReadingType"
+            app:layout_constraintTop_toTopOf="@id/ReadinglblReadingType" />
+
+        <TextView
+            android:id="@+id/ReadinglblReadingValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Enter Reading Value:"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ReadingddReadingType" />
+
+        <EditText
+            android:id="@+id/ReadingtxtReadingValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:ems="10"
+            android:inputType="text"
+            app:layout_constraintStart_toEndOf="@id/ReadinglblReadingValue"
+            app:layout_constraintTop_toTopOf="@id/ReadinglblReadingValue" />
+
+        <TextView
+            android:id="@+id/ReadinglblReadingDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="Select Reading Date:"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ReadingtxtReadingValue"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="232dp" />
+
+        <CalendarView
+            android:id="@+id/ReadingcalendarView"
+            android:layout_width="363dp"
+            android:layout_height="299dp"
+
+            android:layout_margin="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ReadinglblReadingDate" />
+
+        <TextView
+            android:id="@+id/ReadinglblReadingID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="Enter Reading ID:"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ReadingcalendarView" />
+
+        <EditText
+            android:id="@+id/ReadingtxtReadingID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            tools:layout_editor_absoluteX="134dp"
+            tools:layout_editor_absoluteY="528dp"
+            app:layout_constraintStart_toEndOf="@id/ReadinglblReadingID"
+            app:layout_constraintTop_toTopOf="@id/ReadinglblReadingID" />
+
+        <TextView
+            android:id="@+id/ReadinglblReadingUnit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:text="Select Reading Units:"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/ReadingtxtReadingID"
+            tools:layout_editor_absoluteY="581dp" />
+
+        <Spinner
+            android:id="@+id/ReadingddReadingUnit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintStart_toEndOf="@id/ReadinglblReadingUnit"
+            app:layout_constraintTop_toTopOf="@id/ReadinglblReadingUnit" />
+
+        <TextView
+            android:id="@+id/ReadinglblClinic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="15dp"
+            android:paddingBottom="30dp"
+            android:text="Select Clinic:"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ReadingddReadingUnit" />
+
+        <Spinner
+            android:id="@+id/ReadingddClinic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintStart_toEndOf="@id/ReadinglblClinic"
+            app:layout_constraintTop_toTopOf="@id/ReadinglblClinic" />
+
+        <Button
+            android:id="@+id/ReadingbtnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            tools:layout_editor_absoluteX="156dp"
+            tools:layout_editor_absoluteY="593dp"
+            android:layout_marginBottom="25dp"
+            android:paddingBottom="10dp"
+        app:layout_constraintStart_toEndOf="@+id/ReadingbtnCancel"
+        app:layout_constraintTop_toBottomOf="@id/ReadinglblClinic"
+            android:onClick="saveReading"/>
+
+        <Button
+            android:id="@+id/ReadingbtnCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            tools:layout_editor_absoluteX="57dp"
+            tools:layout_editor_absoluteY="601dp"
+            android:layout_marginBottom="25dp"
+            android:paddingBottom="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ReadinglblClinic"
+            android:onClick="cancelReading"/>
+
+
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

@@ -17,6 +17,12 @@ import ru.bartwell.exfilepicker.data.ExFilePickerResult;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Trial trial;
+
+    public MainActivity() {
+        trial = new Trial();
+    }
+
     private static final int LOAD_FILE_REQUEST_CODE = 0;
 
     @Override
@@ -92,5 +98,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    public Trial getTrial() {
+        return trial;
     }
 }
