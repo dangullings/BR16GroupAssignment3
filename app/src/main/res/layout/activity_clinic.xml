@@ -44,27 +44,53 @@
         app:layout_constraintTop_toBottomOf="@+id/ClinicIdtextView" />
 
     <EditText
-        android:id="@+id/ClinicIdEditText"
+        android:id="@+id/txtClinicId"
         android:layout_width="227dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginRight="24dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="104dp"
         android:ems="10"
         android:hint="Enter Clinic Id"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ClinicIdtextView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/ClinicNameEditText"
+        android:id="@+id/txtClinicName"
         android:layout_width="227dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginRight="24dp"
+        android:layout_marginStart="16dp"
         android:ems="10"
         android:hint="Enter Clinic Name"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ClinicIdEditText" />
+        app:layout_constraintStart_toEndOf="@+id/ClinicNameTextView"
+        app:layout_constraintTop_toBottomOf="@+id/txtClinicId" />
+
+    <Button
+        android:id="@+id/btnSubmitClinic"
+        android:layout_width="170dp"
+        android:layout_height="51dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/holo_blue_light"
+        android:contentDescription="Submit Clinic"
+        android:text="Submit"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtClinicName" />
 </android.support.constraint.ConstraintLayout>

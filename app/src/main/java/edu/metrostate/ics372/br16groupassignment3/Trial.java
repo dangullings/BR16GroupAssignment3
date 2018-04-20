@@ -198,11 +198,14 @@ public class Trial {
      * @param id the clinic id
      * @param name the clinic name
      */
-    public void addClinic(int id, String name) {
+    public boolean addClinic(int id, String name) {
         if(!isExistingClinic(id, name)) {
             Clinic newClinic = new Clinic(id, name);
             clinics.add(newClinic);
+            return true;
         }
+
+        return false;
     }
 
     /**
@@ -266,9 +269,12 @@ public class Trial {
      * Add a patient to the trial
      * @param patient the patient to add
      */
-    public void addPatient(Patient patient) {
+    public boolean addPatient(Patient patient) {
         if(!isExistingPatient(patient.getId())) {
             patients.add(patient);
+            return true;
         }
+
+        return false;
     }
 }

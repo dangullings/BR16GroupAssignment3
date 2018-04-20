@@ -1,0 +1,567 @@
+Index: app/src/main/java/edu/metrostate/ics372/br16groupassignment3/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package edu.metrostate.ics372.br16groupassignment3;\n\nimport android.content.Intent;\nimport android.os.Bundle;\nimport android.support.v7.app.AppCompatActivity;\nimport android.view.Menu;\nimport android.view.MenuItem;\nimport android.view.View;\nimport android.widget.Button;\nimport android.widget.Toast;\n\npublic class MainActivity extends AppCompatActivity {\n\n    @Override\n    protected void onCreate(Bundle savedInstanceState) {\n        super.onCreate(savedInstanceState);\n        setContentView(R.layout.activity_main);\n\n        Button btnLoadFile = (Button) findViewById(R.id.btnLoadFile);\n        btnLoadFile.setOnClickListener(new View.OnClickListener() {\n            @Override\n            public void onClick(View v) {\n\n            }\n        });\n\n        Button btnSaveFile = (Button) findViewById(R.id.btnSaveFile);\n        btnSaveFile.setOnClickListener(new View.OnClickListener() {\n            @Override\n            public void onClick(View v) {\n\n            }\n        });\n    }\n\n    @Override\n    public boolean onCreateOptionsMenu(Menu menu) {\n        getMenuInflater().inflate(R.menu.commonmenuss, menu);\n        return super.onCreateOptionsMenu(menu);\n    }\n\n    @Override\n    public boolean onOptionsItemSelected(MenuItem item) {\n\n        int id = item.getItemId();\n\n        if (id == R.id.menuShowReadings){\n            Toast.makeText(this, \"Patient Readings\", Toast.LENGTH_SHORT).show();\n            startActivity(new Intent(this, ShowReadingsActivity.class));\n        }else if (id == R.id.menuUpdatePatientStatus){\n            Toast.makeText(this, \"Patient Status\", Toast.LENGTH_SHORT).show();\n            startActivity(new Intent(this, UpdatePatientStatusActivity.class));\n        }else if (id == R.id.menuAddPatient){\n            Toast.makeText(this, \"Add Patient\", Toast.LENGTH_SHORT).show();\n            startActivity(new Intent(this, PatientActivity.class));\n        }else if (id == R.id.menuAddClinic){\n            Toast.makeText(this, \"Add Clinic\", Toast.LENGTH_SHORT).show();\n            startActivity(new Intent(this, ClinicActivity.class));\n        }else if (id == R.id.menuAddReading){\n            Toast.makeText(this, \"Add Reading\", Toast.LENGTH_SHORT).show();\n            startActivity(new Intent(this, ReadingActivity.class));\n        }else if (id == R.id.menuHome){\n            Toast.makeText(this, \"Home\", Toast.LENGTH_SHORT).show();\n            startActivity(new Intent(this, MainActivity.class));\n        }\n\n        return super.onOptionsItemSelected(item);\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/edu/metrostate/ics372/br16groupassignment3/MainActivity.java	(revision a81b54f7592f98e4f79cdbfb6b8ba94ab3212e18)
++++ app/src/main/java/edu/metrostate/ics372/br16groupassignment3/MainActivity.java	(date 1523839549963)
+@@ -11,6 +11,8 @@
+ 
+ public class MainActivity extends AppCompatActivity {
+ 
++    static Trial trial = new Trial();
++
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+Index: app/src/main/java/edu/metrostate/ics372/br16groupassignment3/UpdatePatientStatusActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package edu.metrostate.ics372.br16groupassignment3;\n\nimport android.os.Bundle;\n\npublic class UpdatePatientStatusActivity extends MainActivity {\n\n    @Override\n    protected void onCreate(Bundle savedInstanceState) {\n        super.onCreate(savedInstanceState);\n        setContentView(R.layout.activity_update_patient_status);\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/edu/metrostate/ics372/br16groupassignment3/UpdatePatientStatusActivity.java	(revision a81b54f7592f98e4f79cdbfb6b8ba94ab3212e18)
++++ app/src/main/java/edu/metrostate/ics372/br16groupassignment3/UpdatePatientStatusActivity.java	(date 1523848651457)
+@@ -1,6 +1,10 @@
+ package edu.metrostate.ics372.br16groupassignment3;
+ 
+ import android.os.Bundle;
++import android.widget.ArrayAdapter;
++import android.widget.Spinner;
++
++import java.util.ArrayList;
+ 
+ public class UpdatePatientStatusActivity extends MainActivity {
+ 
+@@ -8,5 +12,15 @@
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_update_patient_status);
++
++        Spinner spinnerPatientList = (Spinner) findViewById(R.id.spinnerPatientList);
++
++        ArrayList<String> data = new ArrayList<>();
++        data.add("patient12");
++        data.add("patient13");
++        data.add("patient14");
++
++        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item, data);
++        spinnerPatientList.setAdapter(adapter);
+     }
+ }
+Index: app/src/main/res/layout/activity_update_patient_status.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<android.support.constraint.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    tools:context=\".UpdatePatientStatusActivity\">\n\n</android.support.constraint.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_update_patient_status.xml	(revision a81b54f7592f98e4f79cdbfb6b8ba94ab3212e18)
++++ app/src/main/res/layout/activity_update_patient_status.xml	(date 1523849818575)
+@@ -6,4 +6,76 @@
+     android:layout_height="match_parent"
+     tools:context=".UpdatePatientStatusActivity">
+ 
++    <TextView
++        android:id="@+id/PatientStatusTextView"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginLeft="8dp"
++        android:layout_marginStart="8dp"
++        android:layout_marginTop="8dp"
++        android:text="Patient Status"
++        android:textColor="@android:color/holo_blue_light"
++        android:textSize="30sp"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent" />
++
++    <Button
++        android:id="@+id/btnSavePatientStatus"
++        android:layout_width="170dp"
++        android:layout_height="51dp"
++        android:layout_marginBottom="132dp"
++        android:layout_marginEnd="8dp"
++        android:layout_marginLeft="8dp"
++        android:layout_marginRight="8dp"
++        android:layout_marginStart="8dp"
++        android:layout_marginTop="8dp"
++        android:background="@android:color/holo_blue_light"
++        android:contentDescription="Save Patient Status"
++        android:text="Save"
++        android:textColor="@android:color/background_light"
++        android:textSize="24sp"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/txtClinicName" />
++
++    <CheckBox
++        android:id="@+id/checkBox"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginEnd="8dp"
++        android:layout_marginLeft="8dp"
++        android:layout_marginRight="8dp"
++        android:layout_marginStart="8dp"
++        android:layout_marginTop="144dp"
++        android:contentDescription="check mark if patient is in trial"
++        android:text="Status"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent" />
++
++    <Spinner
++        android:id="@+id/spinnerPatientList"
++        android:layout_width="194dp"
++        android:layout_height="28dp"
++        android:layout_marginEnd="8dp"
++        android:layout_marginLeft="8dp"
++        android:layout_marginRight="8dp"
++        android:layout_marginStart="8dp"
++        android:layout_marginTop="80dp"
++        android:background="@android:drawable/spinner_dropdown_background"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.68"
++        app:layout_constraintStart_toEndOf="@+id/txtSelectPatient"
++        app:layout_constraintTop_toTopOf="parent" />
++
++    <TextView
++        android:id="@+id/txtSelectPatient"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:contentDescription="Select Patient"
++        android:text="Select Patient:"
++        tools:layout_editor_absoluteX="49dp"
++        tools:layout_editor_absoluteY="80dp" />
++
+ </android.support.constraint.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_patient.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<android.support.constraint.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    tools:context=\".PatientActivity\">\n\n</android.support.constraint.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_patient.xml	(revision a81b54f7592f98e4f79cdbfb6b8ba94ab3212e18)
++++ app/src/main/res/layout/activity_patient.xml	(date 1524022637805)
+@@ -6,4 +6,64 @@
+     android:layout_height="match_parent"
+     tools:context=".PatientActivity">
+ 
++    <Button
++        android:id="@+id/btnSubmitPatient"
++        android:layout_width="170dp"
++        android:layout_height="51dp"
++        android:layout_marginBottom="132dp"
++        android:layout_marginEnd="8dp"
++        android:layout_marginLeft="8dp"
++        android:layout_marginRight="8dp"
++        android:layout_marginStart="8dp"
++        android:layout_marginTop="8dp"
++        android:background="@android:color/holo_blue_light"
++        android:contentDescription="Submit Patient"
++        android:text="Submit"
++        android:textColor="@android:color/background_light"
++        android:textSize="24sp"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/txtPatientId" />
++
++    <TextView
++        android:id="@+id/patientIdtextView"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginLeft="16dp"
++        android:layout_marginStart="16dp"
++        android:layout_marginTop="68dp"
++        android:text="Patient Id:"
++        android:textSize="18sp"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/addPatientTextView" />
++
++    <EditText
++        android:id="@+id/txtPatientId"
++        android:layout_width="227dp"
++        android:layout_height="wrap_content"
++        android:layout_marginEnd="40dp"
++        android:layout_marginLeft="16dp"
++        android:layout_marginRight="40dp"
++        android:layout_marginStart="16dp"
++        android:layout_marginTop="104dp"
++        android:ems="10"
++        android:hint="Enter Patient Id"
++        android:inputType="text"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toEndOf="@+id/patientIdtextView"
++        app:layout_constraintTop_toTopOf="parent" />
++
++    <TextView
++        android:id="@+id/addPatientTextView"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginLeft="8dp"
++        android:layout_marginStart="8dp"
++        android:layout_marginTop="8dp"
++        android:text="Add Patient"
++        android:textColor="@android:color/holo_blue_light"
++        android:textSize="30sp"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent" />
+ </android.support.constraint.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/java/edu/metrostate/ics372/br16groupassignment3/ClinicActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package edu.metrostate.ics372.br16groupassignment3;\n\nimport android.os.Bundle;\n\npublic class ClinicActivity extends MainActivity {\n\n    @Override\n    protected void onCreate(Bundle savedInstanceState) {\n        super.onCreate(savedInstanceState);\n        setContentView(R.layout.activity_clinic);\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/edu/metrostate/ics372/br16groupassignment3/ClinicActivity.java	(revision a81b54f7592f98e4f79cdbfb6b8ba94ab3212e18)
++++ app/src/main/java/edu/metrostate/ics372/br16groupassignment3/ClinicActivity.java	(date 1524023677623)
+@@ -1,12 +1,114 @@
+ package edu.metrostate.ics372.br16groupassignment3;
+ 
+ import android.os.Bundle;
++import android.text.Editable;
++import android.text.TextWatcher;
++import android.view.View;
++import android.widget.Button;
++import android.widget.EditText;
++import android.widget.Toast;
++
++import java.util.regex.Matcher;
++import java.util.regex.Pattern;
+ 
+ public class ClinicActivity extends MainActivity {
+ 
++    String namePattern = "[0-9a-zA-Z \\-]{1,100}";
++    String idPattern = "[0-9]{1,13}";
++    String clinicIdText;
++    String clinicName;
++
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_clinic);
++
++        final EditText txtClinicId = (EditText) findViewById(R.id.txtClinicId);
++        final EditText txtClinicName = (EditText) findViewById(R.id.txtClinicName);
++
++        Button btnSubmitClinic = (Button) findViewById(R.id.btnSubmitClinic);
++
++
++        txtClinicId.addTextChangedListener(new TextWatcher() {
++
++            public void afterTextChanged(Editable s) {
++            }
++
++            public void beforeTextChanged(CharSequence s, int start,
++                                          int count, int after) {
++            }
++
++            public void onTextChanged(CharSequence s, int start,
++                                      int before, int count) {
++
++                clinicIdText = txtClinicId.getText().toString();
++
++                if (clinicIdText.length() > 0 && isRegexMatch(idPattern, clinicIdText)){
++                    txtClinicId.setTextColor(getResources().getColor(R.color.colorDefaultText));
++                }else {
++                    txtClinicId.setTextColor(getResources().getColor(R.color.colorErrorText));
++                }
++            }
++        });
++
++        txtClinicName.addTextChangedListener(new TextWatcher() {
++
++            public void afterTextChanged(Editable s) {
++            }
++
++            public void beforeTextChanged(CharSequence s, int start,
++                                          int count, int after) {
++            }
++
++            public void onTextChanged(CharSequence s, int start,
++                                      int before, int count) {
++
++                clinicName = txtClinicName.getText().toString();
++
++                if (clinicName.length() > 0 && isRegexMatch(namePattern, clinicName)){
++                    txtClinicName.setTextColor(getResources().getColor(R.color.colorDefaultText));
++                }else {
++                    txtClinicName.setTextColor(getResources().getColor(R.color.colorErrorText));
++                }
++            }
++        });
++
++        btnSubmitClinic.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View v) {
++
++                clinicIdText = txtClinicId.getText().toString();
++                clinicName = txtClinicName.getText().toString();
++
++                if (clinicName.length() > 0 && isRegexMatch(namePattern, clinicName) && clinicIdText.length() > 0 && isRegexMatch(idPattern, clinicIdText)) {
++                    try {
++                        //this.addNewClinic(new Clinic(Integer.parseInt(clinicIdText), clinicName));
++                        if (trial.addClinic(Integer.parseInt(clinicIdText), clinicName)){
++                            reportSubmit("Clinic " + clinicIdText + " - " + clinicName + " added");
++                        }else{
++                            reportSubmit("Clinic " + clinicIdText + " - " + clinicName + " already exists");
++                        }
++                    }
++                    catch(Exception e) {
++                        reportSubmit("Invalid clinic information: must be integer for ID");
++                    }
++                    txtClinicName.setText("");
++                    txtClinicId.setText("");
++                }
++                else
++                    reportSubmit("Invalid clinic information: must be integer value for ID and an alpha-numeric string with only spaces or dashes for the name.");
++            }
++        });
++
++    }
++
++    private void reportSubmit(String message) {
++        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
++    }
++
++    private boolean isRegexMatch(String pattern, String value) {
++        Pattern p = Pattern.compile(pattern);
++        Matcher matcher = p.matcher(value);
++        return matcher.matches();
+     }
+ }
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"NullableNotNullManager\">\n    <option name=\"myDefaultNullable\" value=\"android.support.annotation.Nullable\" />\n    <option name=\"myDefaultNotNull\" value=\"android.support.annotation.NonNull\" />\n    <option name=\"myNullables\">\n      <value>\n        <list size=\"5\">\n          <item index=\"0\" class=\"java.lang.String\" itemvalue=\"org.jetbrains.annotations.Nullable\" />\n          <item index=\"1\" class=\"java.lang.String\" itemvalue=\"javax.annotation.Nullable\" />\n          <item index=\"2\" class=\"java.lang.String\" itemvalue=\"javax.annotation.CheckForNull\" />\n          <item index=\"3\" class=\"java.lang.String\" itemvalue=\"edu.umd.cs.findbugs.annotations.Nullable\" />\n          <item index=\"4\" class=\"java.lang.String\" itemvalue=\"android.support.annotation.Nullable\" />\n        </list>\n      </value>\n    </option>\n    <option name=\"myNotNulls\">\n      <value>\n        <list size=\"4\">\n          <item index=\"0\" class=\"java.lang.String\" itemvalue=\"org.jetbrains.annotations.NotNull\" />\n          <item index=\"1\" class=\"java.lang.String\" itemvalue=\"javax.annotation.Nonnull\" />\n          <item index=\"2\" class=\"java.lang.String\" itemvalue=\"edu.umd.cs.findbugs.annotations.NonNull\" />\n          <item index=\"3\" class=\"java.lang.String\" itemvalue=\"android.support.annotation.NonNull\" />\n        </list>\n      </value>\n    </option>\n  </component>\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_1_7\" project-jdk-name=\"JDK\" project-jdk-type=\"JavaSDK\">\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\n  </component>\n  <component name=\"ProjectType\">\n    <option name=\"id\" value=\"Android\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/misc.xml	(revision a81b54f7592f98e4f79cdbfb6b8ba94ab3212e18)
++++ .idea/misc.xml	(date 1524192683903)
+@@ -25,7 +25,7 @@
+       </value>
+     </option>
+   </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="JDK" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="JDK" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/build/classes" />
+   </component>
+   <component name="ProjectType">
+Index: app/src/main/java/edu/metrostate/ics372/br16groupassignment3/PatientActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package edu.metrostate.ics372.br16groupassignment3;\n\nimport android.os.Bundle;\n\npublic class PatientActivity extends MainActivity {\n\n    @Override\n    protected void onCreate(Bundle savedInstanceState) {\n        super.onCreate(savedInstanceState);\n        setContentView(R.layout.activity_patient);\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/edu/metrostate/ics372/br16groupassignment3/PatientActivity.java	(revision a81b54f7592f98e4f79cdbfb6b8ba94ab3212e18)
++++ app/src/main/java/edu/metrostate/ics372/br16groupassignment3/PatientActivity.java	(date 1524023641608)
+@@ -1,12 +1,77 @@
+ package edu.metrostate.ics372.br16groupassignment3;
+ 
+ import android.os.Bundle;
++import android.text.Editable;
++import android.text.TextWatcher;
++import android.view.View;
++import android.widget.Button;
++import android.widget.EditText;
++import android.widget.Toast;
++
++import java.util.regex.Matcher;
++import java.util.regex.Pattern;
+ 
+ public class PatientActivity extends MainActivity {
+ 
++    String pattern = "[0-9a-zA-Z]{1,10}";
++    String patientId;
++
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_patient);
++
++        final EditText txtPatientId = (EditText) findViewById(R.id.txtPatientId);
++
++        Button btnSubmitPatient = (Button) findViewById(R.id.btnSubmitPatient);
++
++        txtPatientId.addTextChangedListener(new TextWatcher() {
++
++            public void afterTextChanged(Editable s) {
++            }
++
++            public void beforeTextChanged(CharSequence s, int start,
++                                          int count, int after) {
++            }
++
++            public void onTextChanged(CharSequence s, int start,
++                                      int before, int count) {
++
++                patientId = txtPatientId.getText().toString();
++
++                if (patientId.length() > 0 && isRegexMatch(pattern, patientId)){
++                    txtPatientId.setTextColor(getResources().getColor(R.color.colorDefaultText));
++                }else {
++                    txtPatientId.setTextColor(getResources().getColor(R.color.colorErrorText));
++                }
++            }
++        });
++
++        btnSubmitPatient.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View v) {
++                patientId = txtPatientId.getText().toString();
++                    if(patientId.length() > 0 && patientId.length() < 10 && isRegexMatch(pattern, patientId)) {
++                        Patient patient = new Patient(patientId);
++                        if (trial.addPatient(patient)) {
++                            reportSubmit("Patient " + patientId + " added");
++                        } else {
++                            reportSubmit("Patient " + patientId + " already exists");
++                        }
++                    }else
++                        reportSubmit("Invalid patient id either nothing or longer than 10 characters or invalid characters (0-9, a-z, A-Z).");
++            }
++        });
++
++    }
++
++    private void reportSubmit(String message) {
++        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
++    }
++
++    private boolean isRegexMatch(String pattern, String value) {
++        Pattern p = Pattern.compile(pattern);
++        Matcher matcher = p.matcher(value);
++        return matcher.matches();
+     }
+ }
+Index: app/src/main/java/edu/metrostate/ics372/br16groupassignment3/Trial.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package edu.metrostate.ics372.br16groupassignment3;\n\nimport java.io.IOException;\nimport java.util.ArrayList;\n\n/**\n * This class encompasses the logic of the application\n * Aggregates patients and clinics; provides methods for manipulating the patient data\n * @author rordyniec\n *\n */\npublic class Trial {\n    private ArrayList<Patient> patients =  null;\n    private ArrayList<Clinic> clinics = null;\n\n    /**\n     * Constructor - builds the patient list and associated data\n     * @param patientReadings The hashmap of patient reading data\n     */\n    public Trial(ArrayList<Reading> patientReadings) {\n        createObjects();\n        processReadingsList(patientReadings);\n    }\n\n    /**\n     * Constructor - initializes the Patient and Clinic list objects\n     */\n    public Trial() {\n        createObjects();\n    }\n\n    /**\n     * Processes a readings list adding information as needed to the patient and clinic objects\n     * @param patientReadings\n     */\n    public void processReadingsList(ArrayList<Reading> patientReadings) {\n        //iterate through the readings building the patient list and adding readings\n        for (Reading patientReading : patientReadings) {\n            // Instantiate a Patient and add to patients list if the patient does not exist in the list\n            String patientId = patientReading.getPatientId();\n            if (!isExistingPatient(patientId)) {\n                patients.add(new Patient(patientId));\n            }\n\n            //add to the clinics list\n            if(!isExistingClinic(patientReading.getClinicID(), patientReading.getClinicName())) {\n                clinics.add(new Clinic(patientReading.getClinicID(), patientReading.getClinicName()));\n            }\n            // Add new Reading to the corresponding Patient's readings list\n            addReadingToPatient(patientReading);\n        }\n    }\n\n    /**\n     * Initializes the patient and clinic list objects\n     */\n    private void createObjects() {\n        if(patients == null)\n            patients = new ArrayList<Patient>();\n        if(clinics == null)\n            clinics = new ArrayList<Clinic>();\n    }\n\n\n    /**\n     * Determine if a patient is already in our list\n     * @param patientId the patient to find\n     * @return boolean indicating the found status\n     */\n    private boolean isExistingPatient(String patientId) {\n        boolean isExistingPatient = false;\n        for (Patient patient : patients) {\n            if (patient.getId() == patientId) {\n                isExistingPatient = true;\n                break;\n            }\n        }\n        return isExistingPatient;\n    }\n\n    /**\n     * Getter for the patients list\n     * @return ArrayList of Patients\n     */\n    public ArrayList<Patient> getPatients() {\n        return patients;\n    }\n\n    /**\n     * Adds a reading to the patient in the Reading object, if it isn't found then the patient is added\n     * @param reading the reading to add\n     */\n    public void addReadingToPatient(Reading reading) {\n        Patient patient = findPatientById(reading.getPatientId());\n        if(patient==null) {\n            patients.add(new Patient(reading.getPatientId()));\n            patient = findPatientById(reading.getPatientId());\n        }\n        if (patient != null && patient.isPartOfTrial()) {\n            patient.addReading(reading);\n        }\n        this.addClinic(reading.getClinicID(), reading.getClinicName());\n    }\n\n    /**\n     * Adds a reading to the target patient, all values are set by the caller\n     * @param patientId the patient id\n     * @param type the reading type\n     * @param id the reading id\n     * @param value the reading value\n     * @param date the reading date\n     * @param unit the reading unit\n     * @param clinicId the clinic id\n     * @param clinicName the clinic name\n     */\n    public void addReadingToPatient(String patientId, String type, String id, Object value, Long date, String unit, int clinicId, String clinicName) {\n        addReadingToPatient(new Reading(patientId, type, id, value, date, unit, clinicId, clinicName));\n    }\n\n    /**\n     * Adds a reading to the target patient, all values are set by the caller\n     * @param patientId the patient id\n     * @param type the reading type\n     * @param id the reading id\n     * @param value the reading value\n     * @param date the reading date\n     * @param unit the reading unit\n     */\n    public void addReadingToPatient(String patientId, String type, String id, Object value, Long date, String unit) {\n        addReadingToPatient(new Reading(patientId, type, id, value, date, unit));\n    }\n\n    /**\n     * Set the trial status of a patient\n     * @param patientId the patient to update\n     * @param status the new status\n     */\n    public void setPatientTrailStatus(String patientId, boolean status) {\n        findPatientById(patientId).setPartOfTrial(status);\n    }\n\n    /**\n     * Get the trial status of a patient\n     * @param patientId\n     * @return boolean indicating patient trial status\n     */\n    public boolean getPatientTrialStatus(String patientId) {\n        return findPatientById(patientId).isPartOfTrial();\n    }\n\n    /**\n     * format the object for json output\n     */\n    @Override\n    public String toString() {\n        StringBuilder builder = new StringBuilder();\n        builder.append(\"{\\n\" + \"\\t\\\"patient_readings\\\":[\\n\");\n        for (Patient patient : patients) {\n            for (Reading reading : patient.getReadings()) {\n                builder.append(\"\\t\\t{\\n\");\n                builder.append(reading.toString());\n                builder.append(\"\\t\\t},\\n\");\n            }\n        }\n        String returnValue = builder.substring(0, builder.length()-2) + \"\\n\\t]\\n\" + \"}\";\n        return returnValue;\n    }\n\n    /**\n     * Find a patient using the ID\n     * @param patientId the patient to find\n     * @return Patient found, null if not found\n     */\n    public Patient findPatientById(String patientId) {\n        Patient matchingPatient = null;\n        for (Patient patient : patients) {\n            if (patient.getId().equals(patientId)) {\n                matchingPatient = patient;\n                break;\n            }\n        }\n        return matchingPatient;\n    }\n\n\n    /**\n     * Saves the trial data as JSON\n     * @param filePath the path to save as\n     * @throws IOException thrown on file write error\n     */\n    public void saveTrialStatus(String filePath) throws IOException{\n        jsonFileOperations fio = new jsonFileOperations();\n        fio.writeFile(filePath, this.toString());\n    }\n\n    /**\n     * Add a clinic to our list\n     * @param id the clinic id\n     * @param name the clinic name\n     */\n    public void addClinic(int id, String name) {\n        if(!isExistingClinic(id, name)) {\n            Clinic newClinic = new Clinic(id, name);\n            clinics.add(newClinic);\n        }\n    }\n\n    /**\n     * Find a clinic\n     * @param id the clinic id to find\n     * @return Clinic found, null if not found\n     */\n    public Clinic findClinicById(int id) {\n        Clinic matchingClinic = null;\n        for (Clinic clinic : clinics) {\n            if (clinic.getClinicId() == id) {\n                matchingClinic = clinic;\n                break;\n            }\n        }\n        return matchingClinic;\n    }\n\n    /**\n     * Find a clinic\n     * @param name the name of the clinic\n     * @return Clinic found, null if not found\n     */\n    public Clinic findClinicByName(String name) {\n        Clinic matchingClinic = null;\n        for (Clinic clinic : clinics) {\n            if (clinic.getClinicName().equals(name)) {\n                matchingClinic = clinic;\n                break;\n            }\n        }\n        return matchingClinic;\n    }\n\n    /**\n     * See if a Clinic exists\n     * @param id the id to search for\n     * @param name the name to search\n     * @return true if either name or id is matched\n     */\n    public boolean isExistingClinic(int id, String name) {\n        boolean exists = false;\n        for (Clinic clinic : clinics) {\n            if (clinic.getClinicId() == id || clinic.getClinicName().equals(name)) {\n                exists = true;\n                break;\n            }\n        }\n        return exists;\n    }\n\n    /**\n     * Getter for the Clinic list\n     * @return the clinics\n     */\n    public ArrayList<Clinic> getClinics() {\n        return clinics;\n    }\n\n    /**\n     * Add a patient to the trial\n     * @param patient the patient to add\n     */\n    public void addPatient(Patient patient) {\n        if(!isExistingPatient(patient.getId())) {\n            patients.add(patient);\n        }\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/edu/metrostate/ics372/br16groupassignment3/Trial.java	(revision a81b54f7592f98e4f79cdbfb6b8ba94ab3212e18)
++++ app/src/main/java/edu/metrostate/ics372/br16groupassignment3/Trial.java	(date 1523845837347)
+@@ -198,11 +198,14 @@
+      * @param id the clinic id
+      * @param name the clinic name
+      */
+-    public void addClinic(int id, String name) {
++    public boolean addClinic(int id, String name) {
+         if(!isExistingClinic(id, name)) {
+             Clinic newClinic = new Clinic(id, name);
+             clinics.add(newClinic);
++            return true;
+         }
++
++        return false;
+     }
+ 
+     /**
+@@ -266,9 +269,12 @@
+      * Add a patient to the trial
+      * @param patient the patient to add
+      */
+-    public void addPatient(Patient patient) {
++    public boolean addPatient(Patient patient) {
+         if(!isExistingPatient(patient.getId())) {
+             patients.add(patient);
++            return true;
+         }
++
++        return false;
+     }
+ }
+Index: app/src/main/res/values/colors.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<resources>\n    <color name=\"colorPrimary\">#3F51B5</color>\n    <color name=\"colorPrimaryDark\">#303F9F</color>\n    <color name=\"colorAccent\">#FF4081</color>\n</resources>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values/colors.xml	(revision a81b54f7592f98e4f79cdbfb6b8ba94ab3212e18)
++++ app/src/main/res/values/colors.xml	(date 1524024565164)
+@@ -3,4 +3,6 @@
+     <color name="colorPrimary">#3F51B5</color>
+     <color name="colorPrimaryDark">#303F9F</color>
+     <color name="colorAccent">#FF4081</color>
++    <color name="colorErrorText">#FF0000</color>
++    <color name="colorDefaultText">#000000</color>
+ </resources>
+Index: app/src/main/res/layout/activity_clinic.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<android.support.constraint.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    tools:context=\".ClinicActivity\">\n\n    <TextView\n        android:id=\"@+id/AddClinicTextView\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginLeft=\"8dp\"\n        android:layout_marginStart=\"8dp\"\n        android:layout_marginTop=\"8dp\"\n        android:text=\"Add Clinic\"\n        android:textColor=\"@android:color/holo_blue_light\"\n        android:textSize=\"30sp\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toTopOf=\"parent\" />\n\n    <TextView\n        android:id=\"@+id/ClinicIdtextView\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginLeft=\"48dp\"\n        android:layout_marginStart=\"48dp\"\n        android:layout_marginTop=\"68dp\"\n        android:text=\"Clinic Id:\"\n        android:textSize=\"18sp\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toBottomOf=\"@+id/AddClinicTextView\" />\n\n    <TextView\n        android:id=\"@+id/ClinicNameTextView\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginLeft=\"16dp\"\n        android:layout_marginStart=\"16dp\"\n        android:layout_marginTop=\"20dp\"\n        android:text=\"Clinic Name:\"\n        android:textSize=\"18sp\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toBottomOf=\"@+id/ClinicIdtextView\" />\n\n    <EditText\n        android:id=\"@+id/ClinicIdEditText\"\n        android:layout_width=\"227dp\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginEnd=\"24dp\"\n        android:layout_marginRight=\"24dp\"\n        android:layout_marginTop=\"104dp\"\n        android:ems=\"10\"\n        android:hint=\"Enter Clinic Id\"\n        android:inputType=\"text\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintTop_toTopOf=\"parent\" />\n\n    <EditText\n        android:id=\"@+id/ClinicNameEditText\"\n        android:layout_width=\"227dp\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginEnd=\"24dp\"\n        android:layout_marginRight=\"24dp\"\n        android:ems=\"10\"\n        android:hint=\"Enter Clinic Name\"\n        android:inputType=\"text\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintTop_toBottomOf=\"@+id/ClinicIdEditText\" />\n</android.support.constraint.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_clinic.xml	(revision a81b54f7592f98e4f79cdbfb6b8ba94ab3212e18)
++++ app/src/main/res/layout/activity_clinic.xml	(date 1524021973235)
+@@ -44,27 +44,53 @@
+         app:layout_constraintTop_toBottomOf="@+id/ClinicIdtextView" />
+ 
+     <EditText
+-        android:id="@+id/ClinicIdEditText"
++        android:id="@+id/txtClinicId"
+         android:layout_width="227dp"
+         android:layout_height="wrap_content"
+         android:layout_marginEnd="24dp"
++        android:layout_marginLeft="16dp"
+         android:layout_marginRight="24dp"
++        android:layout_marginStart="16dp"
+         android:layout_marginTop="104dp"
+         android:ems="10"
+         android:hint="Enter Clinic Id"
+         android:inputType="text"
+         app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toEndOf="@+id/ClinicIdtextView"
+         app:layout_constraintTop_toTopOf="parent" />
+ 
+     <EditText
+-        android:id="@+id/ClinicNameEditText"
++        android:id="@+id/txtClinicName"
+         android:layout_width="227dp"
+         android:layout_height="wrap_content"
+         android:layout_marginEnd="24dp"
++        android:layout_marginLeft="16dp"
+         android:layout_marginRight="24dp"
++        android:layout_marginStart="16dp"
+         android:ems="10"
+         android:hint="Enter Clinic Name"
+         android:inputType="text"
+         app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintTop_toBottomOf="@+id/ClinicIdEditText" />
++        app:layout_constraintStart_toEndOf="@+id/ClinicNameTextView"
++        app:layout_constraintTop_toBottomOf="@+id/txtClinicId" />
++
++    <Button
++        android:id="@+id/btnSubmitClinic"
++        android:layout_width="170dp"
++        android:layout_height="51dp"
++        android:layout_marginBottom="8dp"
++        android:layout_marginEnd="8dp"
++        android:layout_marginLeft="8dp"
++        android:layout_marginRight="8dp"
++        android:layout_marginStart="8dp"
++        android:layout_marginTop="8dp"
++        android:background="@android:color/holo_blue_light"
++        android:contentDescription="Submit Clinic"
++        android:text="Submit"
++        android:textColor="@android:color/background_light"
++        android:textSize="24sp"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/txtClinicName" />
+ </android.support.constraint.ConstraintLayout>
+\ No newline at end of file

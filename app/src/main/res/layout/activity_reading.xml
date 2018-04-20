@@ -51,7 +51,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             app:layout_constraintStart_toEndOf="@id/ReadinglblPatient"
-            app:layout_constraintTop_toTopOf="@id/ReadinglblPatient" />
+            app:layout_constraintTop_toTopOf="@id/ReadinglblPatient"
+            android:layout_marginLeft="8dp" />
 
         <TextView
             android:id="@+id/ReadinglblReadingType"
