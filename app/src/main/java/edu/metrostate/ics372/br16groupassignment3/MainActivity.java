@@ -9,20 +9,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
+import ru.bartwell.exfilepicker.ExFilePicker;
+import ru.bartwell.exfilepicker.data.ExFilePickerResult;
+
 public class MainActivity extends AppCompatActivity {
+
+    private static final int LOAD_FILE_REQUEST_CODE = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Button btnLoadFile = (Button) findViewById(R.id.btnLoadFile);
-        btnLoadFile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
 
         Button btnSaveFile = (Button) findViewById(R.id.btnSaveFile);
         btnSaveFile.setOnClickListener(new View.OnClickListener() {
@@ -65,5 +65,32 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    public void chooseFile(View view) {
+        System.out.println("Clicked the Load File button");
+        ExFilePicker exFilePicker = new ExFilePicker();
+        exFilePicker.setCanChooseOnlyOneItem(true);
+        exFilePicker.setShowOnlyExtensions("json", "xml");
+        exFilePicker.setChoiceType(ExFilePicker.ChoiceType.FILES);
+        exFilePicker.start(this, LOAD_FILE_REQUEST_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == LOAD_FILE_REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+                ExFilePickerResult result = ExFilePickerResult.getFromIntent(data);
+                try {
+                    ArrayList<Reading> readings = PatientReadingsParser.loadFile(result.getPath() + result.getNames().get(0));
+                    System.out.println(readings);
+                    trial.processReadingsList(readings);
+                    System.out.println(trial);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 }

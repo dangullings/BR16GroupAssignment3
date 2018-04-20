@@ -8,6 +8,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
@@ -31,6 +32,7 @@ public class xmlFileOperations implements IReadingFileOperation {
      * @return ArrayList of Readings
      * @throws IOException for file read errors
      */
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public ArrayList<Reading> getFile(String path) throws IOException {
         DocumentBuilder b = null;
@@ -42,7 +44,8 @@ public class xmlFileOperations implements IReadingFileOperation {
             e.printStackTrace();
         }
         try {
-            doc = b.parse(path);
+            File file = new File(path);
+            doc = b.parse(file);
             NodeList clinicList = doc.getElementsByTagName("Clinic");
             NodeList readingList = doc.getElementsByTagName("Reading");
             readings = processReadingList(clinicList, readingList);
@@ -59,6 +62,7 @@ public class xmlFileOperations implements IReadingFileOperation {
      * @param readings NodeList of Readings
      * @return ArrayList of Readings
      */
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private ArrayList<Reading> processReadingList(NodeList clinic, NodeList readings) {
         int count = readings.getLength();
         int clinicId = Integer.parseUnsignedInt(clinic.item(0).getAttributes().getNamedItem("id").getNodeValue());
