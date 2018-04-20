@@ -75,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void chooseFile(View view) {
-        System.out.println("Clicked the Load File button");
         ExFilePicker exFilePicker = new ExFilePicker();
         exFilePicker.setCanChooseOnlyOneItem(true);
         exFilePicker.setShowOnlyExtensions("json", "xml");
@@ -90,9 +89,7 @@ public class MainActivity extends AppCompatActivity {
                 ExFilePickerResult result = ExFilePickerResult.getFromIntent(data);
                 try {
                     ArrayList<Reading> readings = PatientReadingsParser.loadFile(result.getPath() + result.getNames().get(0));
-                    System.out.println(readings);
                     trial.processReadingsList(readings);
-                    System.out.println(trial);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
